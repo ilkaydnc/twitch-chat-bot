@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ilkaydnc/twitch-chat-bot/issues"
   },
-  "homepage": "https://github.com/ilkaydnc/twitch-chat-bot#readme"
+  "homepage": "https://github.com/ilkaydnc/twitch-chat-bot#readme",
+  "dependencies": {
+    "tmi.js": "^1.5.0"
+  }
 }
