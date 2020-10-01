@@ -1,5 +1,5 @@
-const tmi = require("tmi.js");
-const { username, oauth, channels } = require("./config");
+const tmi = require('tmi.js')
+const { username, oauth, channels } = require('./config')
 
 const options = {
   options: {
@@ -13,17 +13,17 @@ const options = {
     password: oauth,
   },
   channels,
-};
+}
 
-const client = new tmi.client(options);
+const client = new tmi.client(options)
 
 client
   .connect()
-  .then((data) => console.log("connected", data))
+  .then((data) => console.log('connected', data))
   .catch((err) => {
-    throw new Error(err);
-  });
+    throw new Error(err)
+  })
 
-client.on("message", (channel, args, message, self) => {
-  console.log(channel, message);
-});
+client.on('message', (channel, args, message, self) => {
+  console.log(channel, message)
+})
