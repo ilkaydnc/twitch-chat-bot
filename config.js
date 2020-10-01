@@ -1,5 +1,5 @@
 module.export = {
-  username: "",
-  oauth: "",
+  username: '',
+  oauth: '',
   channels: [],
-};
+}
