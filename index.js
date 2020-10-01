@@ -29,6 +29,28 @@ class Channel {
         throw new Error(err)
       })
   }
+
+  listenMessages() {
+    client.on('message', (channel, userstate, message, self) => {
+      if (self) return
+
+      // Handle different message types..
+      switch (userstate['message-type']) {
+        case 'action':
+          // This is an action message..
+          break
+        case 'chat':
+          // This is a chat message..
+          break
+        case 'whisper':
+          // This is a whisper..
+          break
+        default:
+          // Something else ?
+          break
+      }
+    })
+  }
 }
 
 const test = new Channel('1stkingloki')
