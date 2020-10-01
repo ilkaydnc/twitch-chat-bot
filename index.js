@@ -1,5 +1,7 @@
 const tmi = require('tmi.js')
-const { username, oauth } = require('./config')
+require('dotenv').config()
+
+console.log(process.env.BOT_USERNAME)
 
 class Channel {
   constructor(name) {
@@ -12,8 +14,8 @@ class Channel {
         reconnect: true,
       },
       identity: {
-        username,
-        password: oauth,
+        username: process.env.BOT_USERNAME,
+        password: process.env.BOT_OAUTH_KEY,
       },
       channels: [this.name],
     }
