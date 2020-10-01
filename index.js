@@ -1,29 +1,36 @@
 const tmi = require('tmi.js')
-const { username, oauth, channels } = require('./config')
+const { username, oauth } = require('./config')
 
-const options = {
-  options: {
-    debug: false,
-  },
-  connection: {
-    reconnect: true,
-  },
-  identity: {
-    username,
-    password: oauth,
-  },
-  channels,
+class Channel {
+  constructor(name) {
+    this.name = name
+    this.options = {
+      options: {
+        debug: false,
+      },
+      connection: {
+        reconnect: true,
+      },
+      identity: {
+        username,
+        password: oauth,
+      },
+      channels: [this.name],
+    }
+
+    this.client = new tmi.client(this.options)
+  }
+
+  connect() {
+    this.client
+      .connect()
+      .then((data) => console.log('connected', data))
+      .catch((err) => {
+        throw new Error(err)
+      })
+  }
 }
 
-const client = new tmi.client(options)
+const test = new Channel('1stkingloki')
 
-client
-  .connect()
-  .then((data) => console.log('connected', data))
-  .catch((err) => {
-    throw new Error(err)
-  })
-
-client.on('message', (channel, args, message, self) => {
-  console.log(channel, message)
-})
+test.connect()
